@@ -53,9 +53,7 @@ export class CustomersListComponent implements OnInit {
 
     Object.keys(temp).forEach(key => {
       if (temp[key as keyof T]) result[key as keyof T] = temp[key as keyof T]
-
     })
-
     return result
   }
 

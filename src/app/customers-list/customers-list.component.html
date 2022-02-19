@@ -31,30 +31,24 @@
 </ng-template>
 
 <ng-template #thenBlock let-customer>
-  <td><input #name (blur)="setValue('name', customer.name, name.value)" [value]="customer.name" class="form-control-sm"
-             type="text">
-  </td>
+  <td><input [value]="customer.name" class="form-control-sm" type="text">
+    {{customer.name}}</td>
   <td>
-    <input #email (blur)="setValue('email',  customer.email,email.value)" [value]="customer.email"
-           class="form-control-sm"
-           type="email">
-  </td>
+    <input [value]="customer.email" class="form-control-sm" type="email">
+    {{customer.email}}</td>
   <td>
-    <input #location (blur)="setValue('location', customer.location, location.value)" [value]="customer.location"
-           class="form-control-sm" type="text">
-  </td>
+    <input [value]="customer.mobile" class="form-control-sm" type="tel">
+    {{customer.mobile}}</td>
   <td>
-    <input #mobile (blur)="setValue('mobile', customer.mobile , mobile.value)" [value]="customer.mobile"
-           class="form-control-sm"
-           type="tel">
-  </td>
+    <input [value]="customer.location" class="form-control-sm" type="text">
+    {{customer.location}}</td>
 </ng-template>
 
 <ng-template #elseBlock let-customer>
   <td>{{customer.name}}</td>
   <td>{{customer.email}}</td>
-  <td>{{customer.location}}</td>
   <td>{{customer.mobile}}</td>
+  <td>{{customer.location}}</td>
 </ng-template>
 
 <ng-template #customerControlsBlock let-customer="customer" let-i=index>
@@ -65,15 +59,13 @@
     </button>
     <button (click)="cancelEdit()"
             *ngIf="isEditPos === i"
-            class="btn btn-outline-info btn-sm ms-2" type="button"><i class="fas fa-undo"></i>
-    </button>
+            class="btn btn-outline-info btn-sm ms-2" type="button"><i class="fas fa-undo"></i></button>
     <button (click)="saveCustomer(customer, i)"
-            *ngIf="isEditPos === i"
+            *ngIf="isEditPos == i"
             [disabled]="!isChanged"
-            class="btn btn-outline-info btn-sm ms-2" type="button"><i class="fas fa-save"></i>
-    </button>
+            class="btn btn-outline-info btn-sm ms-2" type="button"><i class="fas fa-save"></i></button>
     <button (click)="deleteCustomer(customer)"
-            class="btn btn-outline-info btn-sm ms-2" type="button"><i class="fas fa-trash"></i>
-    </button>
+            *ngIf="isEditPos !== i"
+            class="btn btn-outline-info btn-sm ms-2" type="button"><i class="fas fa-trash"></i></button>
   </td>
 </ng-template>
