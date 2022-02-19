@@ -12,7 +12,7 @@ export class CustomersDetailsComponent implements OnInit {
   form = this.fb.group({
     name: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    mobile: ['', [Validators.required, Validators.minLength(12)]],
+    mobile: ['', [Validators.required, Validators.minLength(8)]],
     location: ['', [Validators.required]],
   })
 
